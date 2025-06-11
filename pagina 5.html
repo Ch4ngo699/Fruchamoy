@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fruchamoy - Contacto</title>
+<style>
+  /* Reset y base */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e6f2d9;
+    color: #2c3e50;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px;
+  }
+
+  /* Fondo frutas animadas */
+  #fruit-container {
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .fruit {
+    position: absolute;
+    bottom: -60px;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.75;
+    animation-timing-function: ease-in-out;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-120vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* Encabezado */
+  header {
+    z-index: 10;
+    margin-top: 60px;
+    max-width: 960px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3.6rem;
+    color: #388e3c;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(56, 142, 60, 0.4);
+  }
+
+  header h2 {
+    font-size: 1.8rem;
+    color: #5a8d2a;
+    font-weight: 500;
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  /* Logo */
+  img#logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(88, 143, 56, 0.15);
+  }
+
+  /* Contenedor contacto */
+  main {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    background: #ffffffcc;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(5px);
+    color: #333;
+    text-align: left;
+  }
+
+  main h3 {
+    color: #388e3c;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+
+  main p {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+
+  main a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  main a:hover {
+    color: #2e7d32;
+  }
+
+  /* Lista de redes */
+  ul.social-list {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+  }
+
+  ul.social-list li {
+    display: inline-block;
+  }
+
+  ul.social-list a {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  ul.social-list a svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    fill: #4caf50;
+    transition: fill 0.3s ease;
+  }
+
+  ul.social-list a:hover svg,
+  ul.social-list a:hover {
+    color: #2e7d32;
+    fill: #2e7d32;
+  }
+
+  /* Botones */
+  .btn-group {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  a.button-link {
+    display: inline-block;
+    background: linear-gradient(135deg, #4caf50 0%, #357a38 100%);
+    color: white;
+    text-decoration: none;
+    padding: 15px 38px;
+    margin: 10px 20px;
+    font-size: 1.15rem;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 6px 12px rgba(69, 117, 41, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  a.button-link:hover,
+  a.button-link:focus {
+    background: linear-gradient(135deg, #357a38 0%, #4caf50 100%);
+    box-shadow: 0 8px 18px rgba(55, 98, 35, 0.75);
+    transform: translateY(-3px);
+    outline: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 2.8rem;
+    }
+    header h2 {
+      font-size: 1.2rem;
+    }
+    main {
+      padding: 20px;
+      font-size: 1rem;
+      text-align: center;
+    }
+    ul.social-list {
+      justify-content: center;
+    }
+    a.button-link {
+      padding: 12px 26px;
+      font-size: 1rem;
+      margin: 8px 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div id="fruit-container"></div>
+
+<header>
+  <h1>Fruchamoy</h1>
+  <h2>Contacto y redes sociales 🌶️📬</h2>
+  <img src="300.png" alt="Logo Fruchamoy" id="logo" />
+</header>
+
+<main>
+  <h3>Contacto directo</h3>
+  <p>Correo electrónico: <a href="mailto:contacto@fruchamoy.com">contacto@fruchamoy.com</a></p>
+  <p>Teléfono: <a href="tel:+5215551234567">+52 1 55 5123 4567</a></p>
+
+  <h3>Síguenos en redes sociales</h3>
+  <ul class="social-list" aria-label="Redes sociales Fruchamoy">
+    <li>
+      <a href="https://www.facebook.com/fruchamoy" target="_blank" rel="noopener noreferrer" aria-label="Facebook Fruchamoy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.675 0h-21.35C.593 0 0 .592 0 1.324v21.351C0 23.406.593 24 1.325 24H12.82v-9.294H9.692V11.07h3.128V8.414c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.312h3.588l-.467 3.636h-3.12V24h6.116c.73 0 1.324-.593 1.324-1.325V1.324C24 .592 23.406 0 22.675 0z"/></svg>
+        Facebook
+      </a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/frocham0y" target="_blank" rel="noopener noreferrer" aria-label="Instagram Frocham0y">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 2A3.75 3.75 0 004 7.75v8.5A3.75 3.75 0 007.75 20h8.5a3.75 3.75 0 003.75-3.75v-8.5A3.75 3.75 0 0016.25 4h-8.5zm8.5 1.25a1 1 0 110 2 1 1 0 010-2zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/></svg>
+        Instagram
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/fruchamoy" target="_blank" rel="noopener noreferrer" aria-label="Twitter Fruchamoy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.954 4.569a10 10 0 01-2.825.775 4.93 4.93 0 002.163-2.724 9.865 9.865 0 01-3.127 1.195 4.916 4.916 0 00-8.373 4.482A13.95 13.95 0 011.671 3.15a4.916 4.916 0 001.523 6.574 4.897 4.897 0 01-2.224-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 01-2.212.084 4.918 4.918 0 004.59 3.417 9.867 9.867 0 01-6.102 2.105c-.396 0-.79-.023-1.17-.067a13.945 13.945 0 007.548 2.212c9.057 0 14.01-7.506 14.01-14.01 0-.213-.005-.425-.014-.636a9.936 9.936 0 002.457-2.548l-.047-.02z"/></svg>
+        Twitter
+      </a>
+    </li>
+  </ul>
+</main>
+
+<div class="btn-group">
+  <a href="Pag 1.html" class="button-link" aria-label="Volver al inicio">Inicio</a>
+  <a href="pagina 4.html" class="button-link" aria-label="Ver precios">Precios</a>
+</div>
+
+<script>
+  const fruitImages = [
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZmlsbD0iI2ZmYzM0MyIgZD0iTTMyIDBjMTAgMCAxOC44IDcgMTguOCAxNy4zIDAgOS4zLTE1IDE3LjItMTguOCAxNy4yQzE1LjIgMzQuNSA0IDIzLjMgNCAxNC44IDQgNyAxMy44IDAgMzIgMHoiLz48L3N2Zz4=",
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHBhdGggZD0iTTMyIDM2YzguMiAwIDE1LTcuMSAxNS0xNXMtNi44LTE1LTE1LTE1LTE1IDYuOC0xNSAxNVMyMy44IDM2IDMyIDM2eiIgZmlsbD0iI2ZmMzYzNiIvPjwvc3ZnPg==",
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZmY2NjAwIiByeD0iMTYiLz48L3N2Zz4="
+  ];
+
+  function createFruit() {
+    const container = document.getElementById("fruit-container");
+    const fruit = document.createElement("div");
+    fruit.classList.add("fruit");
+
+    const fruitImage = fruitImages[Math.floor(Math.random() * fruitImages.length)];
+    fruit.style.backgroundImage = `url(${fruitImage})`;
+
+    const x = Math.random() * 100;
+    fruit.style.left = `${x}vw`;
+
+    const size = 35 + Math.random() * 20;
+    fruit.style.width = `${size}px`;
+    fruit.style.height = `${size}px`;
+
+    const duration = 10 + Math.random() * 8;
+    fruit.style.animation = `floatUp ${duration}s ease-in-out forwards`;
+
+    container.appendChild(fruit);
+
+    fruit.addEventListener("animationend", () => fruit.remove());
+  }
+
+  setInterval(createFruit, 450);
+</script>
+
+</body>
+</html>
+
